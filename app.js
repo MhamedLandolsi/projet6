@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const authRoutes = require('./routes/auth');
 const saucesRoutes = require('./routes/sauces');
+const path = require('path');
 
 app.use(bodyParser.json());
 
@@ -24,7 +25,6 @@ app.use((req, res, next) => {
   
 app.use('/api/auth', authRoutes);
 app.use('/api/sauces', saucesRoutes);
-
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
