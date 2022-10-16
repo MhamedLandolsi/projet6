@@ -5,10 +5,11 @@ const app = express();
 const authRoutes = require('./routes/auth');
 const saucesRoutes = require('./routes/sauces');
 const path = require('path');
+require('dotenv').config()
 
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/projet6',
+mongoose.connect(process.env.URL_MANGO,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
